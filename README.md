@@ -13,10 +13,9 @@ API para cadastro de usuários implementada em Node.js para a disciplina de Prog
 ## server.js
 
 - **GET /users**: Obtém uma array dos usuários cadastrados no banco de dados. Caso não haja usuários, o retorno será um array vazio.  
-  Exemplo:
-  **Request**: `GET localhost:3000/users`
+  Exemplo:  
+  **Request**: `GET localhost:3000/users`  
   **Response**:
-
   ```json
   [
     {
