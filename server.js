@@ -1,12 +1,13 @@
 const express = require("express");
 
+const { userStore } = require("./database");
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
 
-app.get("/", ({ res }) => {
-  res.send("Hello World!");
+app.get("/users", ({ res }) => {
+  res.send(userStore.findAll());
 });
 
 app.listen(PORT, () => {
