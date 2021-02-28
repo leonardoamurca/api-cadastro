@@ -16,6 +16,7 @@ API para cadastro de usuários implementada em Node.js para a disciplina de Prog
   Exemplo:  
   **Request**: `GET localhost:3000/users`  
   **Response**:
+
   ```json
   [
     {
@@ -27,6 +28,82 @@ API para cadastro de usuários implementada em Node.js para a disciplina de Prog
     {
       "_id": 1,
       "name": "Cazalbé",
+      "email": "cazalbe@gmail.com",
+      "address": "Rua Aarão Steimbruch, 7"
+    }
+  ]
+  ```
+
+  - **GET /users/:id**: Obtém um determinado usuário do banco de dados de acordo com o parâmetro id passado no URL. Caso um usuário com esse id não seja encontrado, seu retorno será um objeto vazio.  
+    Exemplo:  
+    **Request**: `GET localhost:3000/users/1`  
+    **Response**:
+    ```json
+    {
+      "_id": 1,
+      "name": "Cazalbé",
+      "email": "cazalbe@gmail.com",
+      "address": "Rua Aarão Steimbruch, 7"
+    }
+    ```
+
+- **POST /users**: Insere um usuário no banco de dados e retorna o mesmo.
+  Exemplo:  
+   **Request**:  
+   `POST localhost:3000/users`
+
+  ```json
+  {
+    "name": "Cazalbé",
+    "email": "cazalbe@gmail.com",
+    "address": "Rua Aarão Steimbruch, 7"
+  }
+  ```
+
+  **Response**:
+
+  ```json
+  {
+    "_id": 1,
+    "name": "Cazalbé",
+    "email": "cazalbe@gmail.com",
+    "address": "Rua Aarão Steimbruch, 7"
+  }
+  ```
+
+- **PUT /users/:id**: Atualiza propriedades de um usuário no banco de dados e o retorna. Caso não exista um usuário com o id passado na URL, a string `"Erro! Usuário não encontrado!"` é retornada.  
+   Exemplo:  
+   **Request**:  
+   `PUT localhost:3000/users/1`
+
+  ```json
+  {
+    "name": "Carlos Alberto"
+  }
+  ```
+
+  **Response**:
+
+  ```json
+  {
+    "_id": 1,
+    "name": "Carlos Alberto",
+    "email": "cazalbe@gmail.com",
+    "address": "Rua Aarão Steimbruch, 7"
+  }
+  ```
+
+- **DELETE /users/:id**: Deleta um determinado usuário no banco de dados e o retorna. Caso um usuário com o id passado na URL, a string `"Erro! Usuário não encontrado!"` é retornada.
+  Exemplo:  
+   **Request**:  
+   `DELETE localhost:3000/users/1`
+  **Response**:
+
+  ```json
+  [
+    {
+      "_id": 1,
+      "name": "Carlos Alberto",
       "email": "cazalbe@gmail.com",
       "address": "Rua Aarão Steimbruch, 7"
     }
