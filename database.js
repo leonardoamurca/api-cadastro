@@ -4,13 +4,17 @@ let _id = 0;
 const UserStore = {
   findAll: () => _data,
   find: (id) => {
-    return _data.find((d) => d._id === id) !== undefined ? user : false;
+    const user = _data.find((d) => d._id === parseInt(id));
+    return user !== undefined ? user : false;
   },
   insert: (item) => {
-    _data.push({ _id: _id++, ...item });
+    const newUser = { _id: _id++, ...item };
+
+    _data.push(newUser);
+    return newUser;
   },
   update: (id, data) => {
-    const user = _data.find((d) => d._id === id);
+    const user = _data.find((d) => d._id === parseInt(id));
     if (user !== undefined) {
       const { name, email, address } = data;
 
@@ -24,9 +28,8 @@ const UserStore = {
     return false;
   },
   delete: (id) => {
-    return _data.find((d) => d._id === id) !== undefined
-      ? _data.splice(_data.indexOf(user), 1)
-      : false;
+    const user = _data.find((d) => d._id === parseInt(id));
+    return user !== undefined ? _data.splice(_data.indexOf(user), 1) : false;
   },
 };
 
